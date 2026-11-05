@@ -1,0 +1,186 @@
+{
+  "info": {
+    "name": "HomeCare QA \u2014 lifecycle and validation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Run requests in numeric order against the default local server. Synthetic data only."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:3000"
+    },
+    {
+      "key": "bookingId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "01 List services",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/services"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('200 OK',()=>pm.response.to.have.status(200));",
+              "pm.test('Cleaning price',()=>pm.expect(pm.response.json().find(s=>s.id==='cleaning').price).to.eql(500));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 Create booking",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/bookings",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Demo User\", \"serviceId\": \"cleaning\", \"rooms\": 2}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('201 created',()=>pm.response.to.have.status(201));",
+              "pm.test('Server total',()=>pm.expect(pm.response.json().total).to.eql(1000));",
+              "pm.collectionVariables.set('bookingId',pm.response.json().id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 Retrieve booking",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/bookings/{{bookingId}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('200 OK',()=>pm.response.to.have.status(200));",
+              "pm.test('Confirmed',()=>pm.expect(pm.response.json().status).to.eql('confirmed'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 Reject zero rooms",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/bookings",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Demo User\", \"serviceId\": \"cleaning\", \"rooms\": 0}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('400 invalid rooms',()=>pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "05 Cancel booking",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/bookings/{{bookingId}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('200 cancelled',()=>pm.response.to.have.status(200));",
+              "pm.test('Cancelled status',()=>pm.expect(pm.response.json().status).to.eql('cancelled'));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 Repeated cancellation",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/bookings/{{bookingId}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('409 conflict',()=>pm.response.to.have.status(409));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

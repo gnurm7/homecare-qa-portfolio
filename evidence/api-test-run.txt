@@ -1,0 +1,24 @@
+✔ API-01 service catalogue contains known price (26.781106ms)
+✔ API-02 booking lifecycle: create, retrieve, cancel, retrieve (9.770346ms)
+✔ API boundary accepts 1 rooms (4.037737ms)
+✔ API boundary accepts 5 rooms (1.891206ms)
+✔ API rejects rooms=0 (2.006781ms)
+✔ API rejects rooms=6 (1.929924ms)
+✔ API rejects rooms=-1 (2.104027ms)
+✔ API rejects rooms=1.5 (1.467206ms)
+✔ API rejects rooms="2" (1.280284ms)
+✔ API-10 rejects whitespace name (2.292338ms)
+✔ API-11 rejects unknown service (2.557162ms)
+✔ API-12 ignores client supplied price (1.193082ms)
+✔ API-13 missing booking is 404 (0.76808ms)
+✔ API-14 malformed JSON is 400 (1.472254ms)
+✔ API-15 duplicate cancellation is 409 (2.246432ms)
+✔ BUG-001 reproduces seeded defect and verifies fixed behaviour (4.64191ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 158.41754

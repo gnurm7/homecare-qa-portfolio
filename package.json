@@ -1,0 +1,18 @@
+{
+  "name": "homecare-qa-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A reproducible QA portfolio: manual test design, API checks, a seeded defect and optional browser automation.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test": "node --test tests/api.test.mjs",
+    "test:ui": "node --test tests/ui.test.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}
