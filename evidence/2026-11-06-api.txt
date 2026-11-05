@@ -1,0 +1,99 @@
+
+> homecare-qa-portfolio@1.0.0 test
+> node --test tests/api.test.mjs
+
+TAP version 13
+# Subtest: API-01 service catalogue contains known price
+ok 1 - API-01 service catalogue contains known price
+  ---
+  duration_ms: 22.4398
+  ...
+# Subtest: API-02 booking lifecycle: create, retrieve, cancel, retrieve
+ok 2 - API-02 booking lifecycle: create, retrieve, cancel, retrieve
+  ---
+  duration_ms: 11.5873
+  ...
+# Subtest: API boundary accepts 1 rooms
+ok 3 - API boundary accepts 1 rooms
+  ---
+  duration_ms: 2.1632
+  ...
+# Subtest: API boundary accepts 5 rooms
+ok 4 - API boundary accepts 5 rooms
+  ---
+  duration_ms: 2.5722
+  ...
+# Subtest: API rejects rooms=0
+ok 5 - API rejects rooms=0
+  ---
+  duration_ms: 3.2587
+  ...
+# Subtest: API rejects rooms=6
+ok 6 - API rejects rooms=6
+  ---
+  duration_ms: 3.8094
+  ...
+# Subtest: API rejects rooms=-1
+ok 7 - API rejects rooms=-1
+  ---
+  duration_ms: 8.1609
+  ...
+# Subtest: API rejects rooms=1.5
+ok 8 - API rejects rooms=1.5
+  ---
+  duration_ms: 6.6888
+  ...
+# Subtest: API rejects rooms="2"
+ok 9 - API rejects rooms="2"
+  ---
+  duration_ms: 3.7964
+  ...
+# Subtest: API-10 rejects whitespace name
+ok 10 - API-10 rejects whitespace name
+  ---
+  duration_ms: 3.568
+  ...
+# Subtest: API-11 rejects unknown service
+ok 11 - API-11 rejects unknown service
+  ---
+  duration_ms: 2.9418
+  ...
+# Subtest: API-12 ignores client supplied price
+ok 12 - API-12 ignores client supplied price
+  ---
+  duration_ms: 3.7075
+  ...
+# Subtest: API-13 missing booking is 404
+ok 13 - API-13 missing booking is 404
+  ---
+  duration_ms: 1.8417
+  ...
+# Subtest: API-14 malformed JSON is 400
+ok 14 - API-14 malformed JSON is 400
+  ---
+  duration_ms: 2.668
+  ...
+# Subtest: API-15 duplicate cancellation is 409
+ok 15 - API-15 duplicate cancellation is 409
+  ---
+  duration_ms: 3.8269
+  ...
+# Subtest: BUG-001 reproduces seeded defect and verifies fixed behaviour
+ok 16 - BUG-001 reproduces seeded defect and verifies fixed behaviour
+  ---
+  duration_ms: 9.976
+  ...
+# Subtest: API rejects a one-character name
+ok 17 - API rejects a one-character name
+  ---
+  duration_ms: 4.0119
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 190.9343

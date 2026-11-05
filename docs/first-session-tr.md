@@ -1,21 +1,14 @@
-# İlk oturum: 45–60 dakika
-1. README'deki kurulum adımlarını uygula; `npm start` ile uygulamayı aç.
-2. Tarayıcıdan iki odalık temizlik rezervasyonu oluştur. Beklenen tutar 1000 TL. İptal et.
-3. `docs/test-cases.md` dosyasında TC-02 ve TC-15'i oku. Yeni bir `docs/my-manual-results.md` dosyasında kendi gözlemini, tarihi ve ortamını kaydet.
-4. Sunucuyu kapat. `npm test` çalıştır; sınır değeri testlerinin kodlarını incele.
-5. BUG-001 raporunu okuyup Postman ile bug mode üzerinde yeniden üret. İşin bitince BUG_MODE değişkenini kaldır.
-6. Kendi katkın olarak ad uzunluğu 1 / 2 / 60 / 61 testlerini ekle. Önce beklenen sonucu yaz, sonra çalıştır ve kaydet.
+# Çalışma rehberi
 
-## GitHub'a ekleme
-GitHub'da `homecare-qa-portfolio` isimli boş bir repository oluştur. ZIP'i aç ve proje dosyalarını yükle; node_modules klasörünü yükleme. Komut satırı kullanıyorsan proje içinde:
-```bash
-git init
-git add .
-git commit -m "Add reproducible QA portfolio demo"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/homecare-qa-portfolio.git
-git push -u origin main
-```
-YOUR_USERNAME yerine kendi hesabını yaz. Otomatik test için Actions sekmesini kontrol et. Workflow bu paket içinde sağlanmıştır; GitHub üzerinde çalıştığı henüz doğrulanmamıştır.
+Proje artık GitHub deposunda takip edilir: https://github.com/gnurm7/homecare-qa-portfolio
 
-Bu başlangıç AI desteğiyle hazırlanmıştır. README'de bunu koru; senaryoları anla, kendin çalıştır, kendi sonuçlarını ve yaptığın geliştirmeleri ekle. Mülakatta açıklayamadığın bir çalışmayı kendi başına geliştirmiş gibi sunma.
+1. Kök dizinde README kurulum adımlarını uygula. PowerShell npm betiğini engellerse `npm.cmd` ve `npx.cmd` kullan.
+2. `npm.cmd start` ile uygulamayı aç. İki odalık temizlik için 1000 TL ve iptal akışını incele.
+3. [Kaydedilmiş altı manuel kontrolü](my-manual-results.md) oku. Yeni oturumları ayrı tarih, ortam, beklenen ve gözlenen sonuçlarla ekle; eski kayıtları değiştirme.
+4. `npm.cmd test` ve kurulumdan sonra `npm.cmd run test:ui` çalıştır. [Güncel ve geçmiş kanıtları](../evidence/summary.md) karşılaştır.
+5. [BUG-001](BUG-001.md) kasıtlı eğitim hatasıdır. Bug mode ile denedikten sonra `Remove-Item Env:BUG_MODE` çalıştır.
+6. Tek karakterli isim testi eklenmiştir. Kalan sınırlar 2/60/61, eksik alanlar, TC-20, klavye kullanımı ve sunucu hata mesajlarıdır. Denemeden başarı kaydetme.
+
+Değişiklikler için `git status`, `git diff`, açıklayıcı commit ve normal `git push` kullan. Uzak değişiklikleri önce kontrol et; force push kullanma. [Actions](https://github.com/gnurm7/homecare-qa-portfolio/actions/workflows/qa.yml) sonucunu izle.
+
+Başlangıç ve bu belge düzenlemesi AI desteğiyle hazırlanmıştır. Sahibinin manuel sonuçları ve ek testi README'de ayrı belirtilmiştir.
