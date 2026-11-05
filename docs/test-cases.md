@@ -33,4 +33,4 @@ Equivalence partitions: rooms valid integers / invalid integers / invalid types.
 - [API suite](../tests/api.test.mjs): TC-01 through TC-17 and TC-21; BUG-001 separately checks both modes. A lifecycle test covers several cases, so 17 tests do not mean 17 designed scenarios. Assertions cover specific properties, not every requirement in full.
 - [Browser suite](../tests/ui.test.mjs): UI-01 covers TC-02/TC-15 visible outcomes; UI-02 covers TC-18; UI-03 covers TC-19. API status codes are checked at the API layer.
 - [Owner manual record](my-manual-results.md): M-01 maps to TC-02, M-02 to TC-15, M-03 to TC-18, M-04/M-05 to UI room limits corresponding to TC-06/TC-04. M-06 checks an empty name under R2/R6.
-- TC-20 remains unexecuted. Current results and historical limitations: [execution summary](../evidence/summary.md).
+- TC-20 remains unexecuted. Current results and historical limitations: [execution summary](../README.md#results-and-evidence).

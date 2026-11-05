@@ -40,11 +40,13 @@ The collection contains 10 assertions. Use the default (fixed) server.
 | Execution | Result | Evidence |
 |---|---|---|
 | Owner manual session, 2026-10-31, Windows/Chrome | 6 passed | [Manual observations](docs/my-manual-results.md) |
-| Earlier owner-reported automation, date/environment not recorded | 17 API and 3 Playwright passed; full original logs unavailable | [Evidence limitations](evidence/summary.md) |
+| Earlier owner-reported automation, date/environment not recorded | 17 API and 3 Playwright passed; full original logs unavailable | See limitations below |
 | Preparation, 2026-10-31, Linux/Node 24.22.1 | 16 API passed; Newman 10 assertions passed; browser download failed | [Historical summary](evidence/preparation-summary-2026-10-31.md) |
 | Verification, 2026-11-06, Windows/Node 22.13.0 | 17 API and 3 Playwright passed | [API log](evidence/2026-11-06-api.txt), [browser log](evidence/2026-11-06-ui.txt) |
 
-See the [execution summary](evidence/summary.md) for limitations and CI status. No new manual session or screenshots are claimed.
+The 2026-11-06 rerun used npm 11.2.0, Playwright 1.62.1 and headless Chromium on Windows, with isolated local servers and synthetic data. Dates use Europe/Istanbul. BUG-001 reproduced the intentional erroneous 201 in bug mode and verified 400 in default mode. [GitHub Actions passed on Ubuntu / Node 24](https://github.com/gnurm7/homecare-qa-portfolio/actions/runs/42115734521) for commit `29ffc8a`.
+
+Manual and Postman checks were not rerun during this review; no screenshots were captured.
 
 ## Project map
 
