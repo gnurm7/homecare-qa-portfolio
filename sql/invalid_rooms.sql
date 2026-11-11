@@ -1,0 +1,1 @@
+SELECT id FROM bookings WHERE rooms NOT BETWEEN 1 AND 5 OR rooms IS NULL;

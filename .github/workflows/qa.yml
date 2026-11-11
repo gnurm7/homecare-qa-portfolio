@@ -1,17 +1,40 @@
 name: QA checks
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: read
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['22', '24']
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: ${{ matrix.node }}
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - run: npm ci
       - run: npx playwright install --with-deps chromium
-      - run: npm test
-      - run: npm run test:ui
+      - run: mkdir -p test-results
+      - name: API tests (JUnit)
+        run: node --test --test-reporter=junit tests/api.test.mjs > test-results/api.xml
+      - name: Browser tests (JUnit and failure traces)
+        if: ${{ !cancelled() }}
+        run: node --test --test-reporter=junit tests/ui.test.mjs > test-results/ui.xml
+      - name: SQL data quality checks
+        if: ${{ !cancelled() }}
+        run: python scripts/check_sql.py
+      - name: Upload execution evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-results-node-${{ matrix.node }}
+          path: test-results/
+          if-no-files-found: warn
+          retention-days: 14
