@@ -4,23 +4,23 @@
 
 [![QA checks](https://github.com/gnurm7/homecare-qa-portfolio/actions/workflows/qa.yml/badge.svg)](https://github.com/gnurm7/homecare-qa-portfolio/actions/workflows/qa.yml)
 
-A reproducible service-booking project demonstrating API and browser automation, manual test design, defect reporting, SQL data investigation and CI. Review the executable examples and dated evidence below.
+HomeCare is a local service-booking demo. The test suite checks how the application validates inputs, calculates prices, and manages bookings from creation through cancellation. Playwright tests cover the booking flow and verify that users can retry after a failed request. A separate SQLite exercise checks data quality in a synthetic booking extract.
 
-## For hiring teams: start here
+## Test coverage and evidence
 
-| Capability | What to inspect | What it demonstrates |
+| Test area | Code or record | Coverage |
 |---|---|---|
 | API test automation · JavaScript/Node.js | [37 API tests](tests/api.test.mjs) | Boundary analysis, invalid types, HTTP contracts, pricing integrity, lifecycle and concurrent state isolation |
 | Browser automation · Playwright | [8 browser tests](tests/ui.test.mjs) | Booking/cancellation, error injection and retry, keyboard interaction, mobile viewport; failure screenshots and traces |
-| Manual testing and test design | [Cases and traceability](docs/test-cases.md), [owner's manual record](docs/my-manual-results.md) | Requirement-based scenarios, equivalence partitions and six recorded owner-run manual checks |
+| Manual testing and test design | [Cases and traceability](docs/test-cases.md), [manual test record](docs/my-manual-results.md) | Requirement-based scenarios, equivalence partitions and six recorded manual checks |
 | Defect analysis | [BUG-001](docs/BUG-001.md) | Reproducible steps, expected/actual result and regression verification of an intentionally seeded defect |
 | SQL and data quality · SQLite | [Queries and expected findings](docs/sql-checks.md), [executable checker](scripts/check_sql.py) | JOIN, LEFT JOIN, GROUP BY/HAVING; five detection checks plus five clean-data controls |
-| Risk analysis and QA judgment | [Test strategy](docs/test-strategy.md), [automation decisions](docs/automation-decisions.md) | Risk priorities, state transitions, test-layer tradeoffs and release criteria |
+| Risk-based test design | [Test strategy](docs/test-strategy.md), [automation decisions](docs/automation-decisions.md) | Risk priorities, state transitions, test-layer tradeoffs and release criteria |
 | CI and debugging · GitHub Actions | [Workflow](.github/workflows/qa.yml) | Node 22/24 matrix, JUnit reports and retained failure artifacts |
-| Exploratory testing preparation | [30-minute charter](docs/exploratory-charter.md) | Timeboxed investigation and evidence template; session not yet executed |
+| Exploratory test plan | [30-minute charter](docs/exploratory-charter.md) | Timeboxed investigation and evidence template; session not yet executed |
 | API tooling · Postman | [Collection](postman/HomeCare.postman_collection.json) | Six ordered requests, chained booking id and ten assertions |
 
-The app uses synthetic data and in-memory storage. SQL is a separate synthetic extract exercise. No production, database integration, load-testing, security audit, real-device or accessibility certification is claimed.
+The app stores synthetic bookings in memory. Browser automation runs on Chromium and includes a mobile viewport and keyboard navigation. The SQLite checks run independently against a sample extract.
 
 ## Run locally
 
@@ -52,7 +52,7 @@ On a browser failure, inspect `test-results/failure-*.png` and open a trace:
 npx playwright show-trace test-results/trace-1.zip
 ```
 
-The workflow runs on push, pull request and manual dispatch. Download `qa-results-node-22` or `qa-results-node-24` from a run for JUnit XML and any failure artifacts (14-day retention). New workflow configuration has been prepared locally; its remote execution is not yet verified.
+The workflow runs on push, pull request and manual dispatch. Download `qa-results-node-22` or `qa-results-node-24` from a run for JUnit XML and any failure artifacts (14-day retention). The expanded suite passed on Ubuntu with Node.js 22 and 24 in [GitHub Actions](https://github.com/gnurm7/homecare-qa-portfolio/actions/runs/43046151467).
 
 ## Results and evidence
 
@@ -63,7 +63,7 @@ The workflow runs on push, pull request and manual dispatch. Download `qa-result
 | Historical verification, 2026-11-06, Windows / Node 22.13.0 | 17 API + 3 browser tests passed | [API log](evidence/2026-11-06-api.txt), [browser log](evidence/2026-11-06-ui.txt) |
 | Historical preparation, 2026-10-31, Linux / Node 24.22.1 | 16 API passed; Newman 10 assertions passed; browser download failed | [Preparation summary](evidence/preparation-summary-2026-10-31.md) |
 
-Dates use Europe/Istanbul. The earlier [Ubuntu / Node 24 CI run](https://github.com/gnurm7/homecare-qa-portfolio/actions/runs/42115734521) belongs to commit `29ffc8a`, not this expanded suite. Earlier owner-reported automation lacked complete original logs; it is not counted as new execution evidence. Manual exploration, Postman and the new Ubuntu matrix were not rerun during the current local verification.
+Dates use Europe/Istanbul. The local rerun covered API, Chromium and SQLite checks. Manual and Postman results are recorded separately.
 
 ## Postman and training defect
 
@@ -75,8 +75,8 @@ npx --yes newman@6.2.3 run postman/HomeCare.postman_collection.json
 
 [BUG-001](docs/BUG-001.md) deliberately accepts zero rooms only in training bug mode. The automated reproduction checks both the erroneous 201 and the correct default 400. Bash: `BUG_MODE=1 npm start`. PowerShell: `$env:BUG_MODE="1"; npm.cmd start`; after stopping, run `Remove-Item Env:BUG_MODE`.
 
-## Ownership and next practice
+## Project notes
 
-Gülsüm Nur Maslak performed the six recorded manual checks and added the original one-character-name API rejection test. The starter and subsequent expansion, including new automation, SQL exercises and documentation, were AI-assisted; the current automated rerun was agent-executed. Repository content is a reviewable learning artifact, not evidence that every addition was independently authored or every technique mastered by the owner.
+I ran and documented six manual checks and added the API regression test for one-character names. I used AI assistance for the starter project, the expanded automation, SQL exercises and documentation. The November 11 local automated rerun was executed by a coding agent.
 
-Next owner-run steps: execute and record the exploratory charter, investigate any findings, add a regression test with your own explanation, and review the new GitHub Actions run after publishing. [Türkçe mülakat gösterim rehberi](docs/interview-walkthrough-tr.md) · [İlk çalışma rehberi](docs/first-session-tr.md) · [Requirements](docs/requirements.md).
+Next step: run the [exploratory test session](docs/exploratory-charter.md) and record the findings. [Türkçe test rehberi](docs/qa-walkthrough-tr.md) · [İlk çalışma rehberi](docs/first-session-tr.md) · [Requirements](docs/requirements.md).
