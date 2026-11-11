@@ -26,20 +26,20 @@ jobs:
       - name: SQL data quality checks
         if: ${{ !cancelled() }}
         run: python scripts/check_sql.py
-      - name: Install Chromium and system dependencies
+      - name: Install Chromium
         id: browser
         if: ${{ !cancelled() }}
         timeout-minutes: 5
         shell: bash
         run: |
           for attempt in 1 2 3; do
-            if npx playwright install --with-deps chromium; then
+            if npx playwright install chromium; then
               exit 0
             fi
             if [ "$attempt" -eq 3 ]; then
               exit 1
             fi
-            echo "Browser dependency installation failed; retrying (attempt $attempt of 3)."
+            echo "Chromium download failed; retrying (attempt $attempt of 3)."
             sleep 10
           done
       - name: Browser tests (JUnit and failure traces)
