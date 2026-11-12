@@ -77,6 +77,8 @@ npx --yes newman@6.2.3 run postman/HomeCare.postman_collection.json
 
 ## Project notes
 
+My next study covers multi-page e-commerce journeys, including account sessions, product discovery, cart consistency and checkout. The [Automation Exercise test plan](projects/automation-exercise/README.md) contains 20 planned scenarios and a session record for execution results.
+
 My focus in this project is to connect requirements and product risks with repeatable checks and reviewable evidence. The repository includes six documented manual checks, an API regression test for one-character names, automated booking journeys and SQL queries for investigating data quality.
 
 Next step: run the [exploratory test session](docs/exploratory-charter.md) and record the findings. [Türkçe test rehberi](docs/qa-walkthrough-tr.md) · [İlk çalışma rehberi](docs/first-session-tr.md) · [Requirements](docs/requirements.md).
