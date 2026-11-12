@@ -1,6 +1,6 @@
 # Execution summary — 2026-10-31
 
-Prepared with AI assistance. These are execution results in the preparation environment, not claims of the repository owner's independent manual testing.
+This record covers automated checks in the initial Linux preparation environment. The dated manual session is recorded in [manual observations](../docs/my-manual-results.md).
 
 | Check | Result | Evidence |
 |---|---|---|
@@ -16,5 +16,5 @@ Environment: Node.js v24.22.1, Linux. Playwright dependency 1.62.1 installed suc
 ## Release assessment
 API evidence supports the specified validation and lifecycle checks. UI behaviour, real mobile devices and manual usability remain unverified. The project is suitable as an educational starter; it is not production software.
 
-## Owner's next step
-Run the application and add your own dated manual findings to a new file. Add name-length boundary tests and explain their purpose. Keep generated preparation evidence separate from your own results.
+## Subsequent verification
+Later manual findings and expanded automation results are linked from the [project execution record](../README.md#results-and-evidence).

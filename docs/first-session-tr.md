@@ -11,4 +11,4 @@ Proje artık GitHub deposunda takip edilir: https://github.com/gnurm7/homecare-q
 
 Değişiklikler için `git status`, `git diff`, açıklayıcı commit ve normal `git push` kullan. Uzak değişiklikleri önce kontrol et; force push kullanma. [Actions](https://github.com/gnurm7/homecare-qa-portfolio/actions/workflows/qa.yml) sonucunu izle.
 
-Başlangıç ve bu belge düzenlemesi AI desteğiyle hazırlanmıştır. Sahibinin manuel sonuçları ve ek testi README'de ayrı belirtilmiştir.
+Test kapsamı, çalıştırma komutları ve tarihli sonuç kayıtları README'de yer alır.

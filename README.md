@@ -4,7 +4,7 @@
 
 [![QA checks](https://github.com/gnurm7/homecare-qa-portfolio/actions/workflows/qa.yml/badge.svg)](https://github.com/gnurm7/homecare-qa-portfolio/actions/workflows/qa.yml)
 
-HomeCare is a local service-booking demo. The test suite checks how the application validates inputs, calculates prices, and manages bookings from creation through cancellation. Playwright tests cover the booking flow and verify that users can retry after a failed request. A separate SQLite exercise checks data quality in a synthetic booking extract.
+HomeCare is my QA portfolio project for a service-booking application. It brings together risk-based test design, API and browser automation, manual test records, defect reporting and SQL data checks. The tests focus on input validation, pricing accuracy, booking cancellation and recovery after failed requests.
 
 ## Test coverage and evidence
 
@@ -59,7 +59,7 @@ The workflow runs on push, pull request and manual dispatch. Download `qa-result
 | Execution | Result | Evidence |
 |---|---|---|
 | Local automated verification, 2026-11-11, Windows / Node 22.13.0 | 37 API + 8 Chromium tests passed; 10 SQL checks passed | [Current record](evidence/2026-11-11-summary.md) |
-| Owner manual session, 2026-10-31, Windows/Chrome | 6 passed | [Manual observations](docs/my-manual-results.md) |
+| Manual session, 2026-10-31, Windows/Chrome | 6 passed | [Manual observations](docs/my-manual-results.md) |
 | Historical verification, 2026-11-06, Windows / Node 22.13.0 | 17 API + 3 browser tests passed | [API log](evidence/2026-11-06-api.txt), [browser log](evidence/2026-11-06-ui.txt) |
 | Historical preparation, 2026-10-31, Linux / Node 24.22.1 | 16 API passed; Newman 10 assertions passed; browser download failed | [Preparation summary](evidence/preparation-summary-2026-10-31.md) |
 
@@ -77,6 +77,6 @@ npx --yes newman@6.2.3 run postman/HomeCare.postman_collection.json
 
 ## Project notes
 
-I ran and documented six manual checks and added the API regression test for one-character names. I used AI assistance for the starter project, the expanded automation, SQL exercises and documentation. The November 11 local automated rerun was executed by a coding agent.
+My focus in this project is to connect requirements and product risks with repeatable checks and reviewable evidence. The repository includes six documented manual checks, an API regression test for one-character names, automated booking journeys and SQL queries for investigating data quality.
 
 Next step: run the [exploratory test session](docs/exploratory-charter.md) and record the findings. [Türkçe test rehberi](docs/qa-walkthrough-tr.md) · [İlk çalışma rehberi](docs/first-session-tr.md) · [Requirements](docs/requirements.md).
