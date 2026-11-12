@@ -34,3 +34,21 @@ Equivalence partitions: rooms valid integers / invalid integers / invalid types.
 - [Browser suite](../tests/ui.test.mjs): UI-01 covers TC-02/TC-15 visible outcomes; UI-02 covers TC-18; UI-03 covers TC-19. API status codes are checked at the API layer.
 - [Owner manual record](my-manual-results.md): M-01 maps to TC-02, M-02 to TC-15, M-03 to TC-18, M-04/M-05 to UI room limits corresponding to TC-06/TC-04. M-06 checks an empty name under R2/R6.
 - TC-20 remains unexecuted. Current results and historical limitations: [execution summary](../README.md#results-and-evidence).
+
+## Expanded automation (2026-11-11)
+
+| Scenario | Requirement / purpose | Automation |
+|---|---|---|
+| Names 2/60 accepted; 61 rejected; trimming and Unicode | R2 boundaries | API-18/19 |
+| Name types, missing fields and non-object JSON | R2 partitions | API-19/20/21 |
+| Oversized input rejected; server remains available | Defensive behaviour (413) | API-22 |
+| Ten concurrent creations; cancelling one leaves others confirmed | R3/R5 state isolation | API-23 |
+| Client cannot choose id/status/repair total | R3 server ownership | API-24 |
+| Unknown cancellation id | R5 negative path | API-25 |
+| HTTP 500 submit; retry succeeds | R6 error recovery | UI-04 |
+| Network abort restores submit | R6 error recovery | UI-05; TC-20 still requires manual observation |
+| Keyboard form order and Enter submission | R6 basic keyboard journey | UI-06 |
+| 375px viewport; no horizontal overflow; booking works | R6 viewport smoke | UI-07 |
+| Cancellation 500; retry succeeds | R5/R6 recovery | UI-08 |
+
+Parameterized test labels identify input partitions. Current suite: 37 API tests and 8 browser tests. Neither test count nor code coverage is a percentage of requirements covered. SQL exercise is separate from R1–R6; see [SQL checks](sql-checks.md).

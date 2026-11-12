@@ -1,0 +1,235 @@
+﻿TAP version 13
+# Subtest: API-01 service catalogue contains known price
+ok 1 - API-01 service catalogue contains known price
+  ---
+  duration_ms: 21.9386
+  ...
+# Subtest: API-02 booking lifecycle: create, retrieve, cancel, retrieve
+ok 2 - API-02 booking lifecycle: create, retrieve, cancel, retrieve
+  ---
+  duration_ms: 9.8653
+  ...
+# Subtest: API boundary accepts 1 rooms
+ok 3 - API boundary accepts 1 rooms
+  ---
+  duration_ms: 2.0399
+  ...
+# Subtest: API boundary accepts 5 rooms
+ok 4 - API boundary accepts 5 rooms
+  ---
+  duration_ms: 1.8124
+  ...
+# Subtest: API rejects rooms=0
+ok 5 - API rejects rooms=0
+  ---
+  duration_ms: 1.8106
+  ...
+# Subtest: API rejects rooms=6
+ok 6 - API rejects rooms=6
+  ---
+  duration_ms: 2.9943
+  ...
+# Subtest: API rejects rooms=-1
+ok 7 - API rejects rooms=-1
+  ---
+  duration_ms: 3.5387
+  ...
+# Subtest: API rejects rooms=1.5
+ok 8 - API rejects rooms=1.5
+  ---
+  duration_ms: 1.4604
+  ...
+# Subtest: API rejects rooms="2"
+ok 9 - API rejects rooms="2"
+  ---
+  duration_ms: 1.3412
+  ...
+# Subtest: API-10 rejects whitespace name
+ok 10 - API-10 rejects whitespace name
+  ---
+  duration_ms: 1.5003
+  ...
+# Subtest: API-11 rejects unknown service
+ok 11 - API-11 rejects unknown service
+  ---
+  duration_ms: 1.07
+  ...
+# Subtest: API-12 ignores client supplied price
+ok 12 - API-12 ignores client supplied price
+  ---
+  duration_ms: 1.0662
+  ...
+# Subtest: API-13 missing booking is 404
+ok 13 - API-13 missing booking is 404
+  ---
+  duration_ms: 0.7322
+  ...
+# Subtest: API-14 malformed JSON is 400
+ok 14 - API-14 malformed JSON is 400
+  ---
+  duration_ms: 1.0284
+  ...
+# Subtest: API-15 duplicate cancellation is 409
+ok 15 - API-15 duplicate cancellation is 409
+  ---
+  duration_ms: 3.1608
+  ...
+# Subtest: BUG-001 reproduces seeded defect and verifies fixed behaviour
+ok 16 - BUG-001 reproduces seeded defect and verifies fixed behaviour
+  ---
+  duration_ms: 6.2455
+  ...
+# Subtest: API rejects a one-character name
+ok 17 - API rejects a one-character name
+  ---
+  duration_ms: 3.173
+  ...
+# Subtest: API-18 accepts valid name (2 code units)
+ok 18 - API-18 accepts valid name (2 code units)
+  ---
+  duration_ms: 1.154
+  ...
+# Subtest: API-18 accepts valid name (60 code units)
+ok 19 - API-18 accepts valid name (60 code units)
+  ---
+  duration_ms: 1.0994
+  ...
+# Subtest: API-18 accepts valid name (13 code units)
+ok 20 - API-18 accepts valid name (13 code units)
+  ---
+  duration_ms: 0.9775
+  ...
+# Subtest: API-18 accepts valid name (10 code units)
+ok 21 - API-18 accepts valid name (10 code units)
+  ---
+  duration_ms: 0.8784
+  ...
+# Subtest: API-19 rejects invalid name "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+ok 22 - API-19 rejects invalid name "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  ---
+  duration_ms: 2.4391
+  ...
+# Subtest: API-19 rejects invalid name null
+ok 23 - API-19 rejects invalid name null
+  ---
+  duration_ms: 1.4803
+  ...
+# Subtest: API-19 rejects invalid name 42
+ok 24 - API-19 rejects invalid name 42
+  ---
+  duration_ms: 0.9484
+  ...
+# Subtest: API-19 rejects invalid name []
+ok 25 - API-19 rejects invalid name []
+  ---
+  duration_ms: 0.9303
+  ...
+# Subtest: API-19 rejects invalid name {}
+ok 26 - API-19 rejects invalid name {}
+  ---
+  duration_ms: 0.8757
+  ...
+# Subtest: API-20 requires name
+ok 27 - API-20 requires name
+  ---
+  duration_ms: 0.9106
+  ...
+# Subtest: API-20 requires serviceId
+ok 28 - API-20 requires serviceId
+  ---
+  duration_ms: 0.7746
+  ...
+# Subtest: API-20 requires rooms
+ok 29 - API-20 requires rooms
+  ---
+  duration_ms: 0.7644
+  ...
+# Subtest: API-21 rejects non-object payload null
+ok 30 - API-21 rejects non-object payload null
+  ---
+  duration_ms: 0.9918
+  ...
+# Subtest: API-21 rejects non-object payload []
+ok 31 - API-21 rejects non-object payload []
+  ---
+  duration_ms: 0.8965
+  ...
+# Subtest: API-21 rejects non-object payload "booking"
+ok 32 - API-21 rejects non-object payload "booking"
+  ---
+  duration_ms: 1.1248
+  ...
+# Subtest: API-21 rejects non-object payload 42
+ok 33 - API-21 rejects non-object payload 42
+  ---
+  duration_ms: 0.9677
+  ...
+# Subtest: API-22 oversized request returns 413 and server stays healthy
+ok 34 - API-22 oversized request returns 413 and server stays healthy
+  ---
+  duration_ms: 2.1982
+  ...
+# Subtest: API-23 concurrent bookings retain unique identity and independent state
+ok 35 - API-23 concurrent bookings retain unique identity and independent state
+  ---
+  duration_ms: 16.1182
+  ...
+# Subtest: API-24 server owns id, status and repair price
+ok 36 - API-24 server owns id, status and repair price
+  ---
+  duration_ms: 1.1716
+  ...
+# Subtest: API-25 cancelling unknown booking returns 404
+ok 37 - API-25 cancelling unknown booking returns 404
+  ---
+  duration_ms: 0.6463
+  ...
+# Subtest: UI-01 booking price and cancellation
+ok 38 - UI-01 booking price and cancellation
+  ---
+  duration_ms: 352.9819
+  ...
+# Subtest: UI-02 browser blocks zero rooms
+ok 39 - UI-02 browser blocks zero rooms
+  ---
+  duration_ms: 175.7929
+  ...
+# Subtest: UI-03 repair uses different price
+ok 40 - UI-03 repair uses different price
+  ---
+  duration_ms: 188.4418
+  ...
+# Subtest: UI-04 server error is visible and booking can be retried
+ok 41 - UI-04 server error is visible and booking can be retried
+  ---
+  duration_ms: 232.8553
+  ...
+# Subtest: UI-05 network failure restores submit control
+ok 42 - UI-05 network failure restores submit control
+  ---
+  duration_ms: 156.9622
+  ...
+# Subtest: UI-06 keyboard-only booking follows labelled form controls
+ok 43 - UI-06 keyboard-only booking follows labelled form controls
+  ---
+  duration_ms: 197.9115
+  ...
+# Subtest: UI-07 mobile viewport supports booking without horizontal overflow
+ok 44 - UI-07 mobile viewport supports booking without horizontal overflow
+  ---
+  duration_ms: 176.0486
+  ...
+# Subtest: UI-08 cancellation error keeps retry available
+ok 45 - UI-08 cancellation error keeps retry available
+  ---
+  duration_ms: 315.9188
+  ...
+1..45
+# tests 45
+# suites 0
+# pass 45
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2221.0592

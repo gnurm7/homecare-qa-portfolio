@@ -1,0 +1,11 @@
+﻿PASS pricing_mismatch: detected [('b3', 1, 1500)]
+PASS orphan_service: detected [('b4',)]
+PASS duplicate_identity: detected [('b1', 2)]
+PASS invalid_state: detected [('b6',)]
+PASS invalid_rooms: detected [('b5',)]
+PASS pricing_mismatch: clean data has no findings
+PASS orphan_service: clean data has no findings
+PASS duplicate_identity: clean data has no findings
+PASS invalid_state: clean data has no findings
+PASS invalid_rooms: clean data has no findings
+10 SQL checks passed (5 detection checks + 5 clean-data controls).

@@ -10,7 +10,10 @@
   "scripts": {
     "start": "node src/server.mjs",
     "test": "node --test tests/api.test.mjs",
-    "test:ui": "node --test tests/ui.test.mjs"
+    "test:ui": "node --test tests/ui.test.mjs",
+    "test:all": "node --test tests/api.test.mjs tests/ui.test.mjs",
+    "test:coverage": "node --experimental-test-coverage --test tests/api.test.mjs",
+    "test:sql": "python scripts/check_sql.py"
   },
   "devDependencies": {
     "playwright": "1.62.1"
